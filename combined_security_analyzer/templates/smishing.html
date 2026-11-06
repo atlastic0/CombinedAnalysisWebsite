@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smishing Detector</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='smishing/style.css') }}">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="{{ url_for('home') }}">← Home</a>
+    <span>Smishing Detector</span>
+    <a href="{{ url_for('dataset_page') }}">Dataset Analyzer →</a>
+  </nav>
+  <main class="wrap">
+    <p class="eyebrow">MESSAGE SECURITY</p>
+    <h1>Smishing Detector</h1>
+    <p class="intro">Paste a text message to check whether it resembles a smishing attempt.</p>
+    <section class="panel">
+      <label for="messageText">Text message</label>
+      <textarea id="messageText" maxlength="10000" placeholder="Paste the SMS message here..." rows="9"></textarea>
+      <div class="row">
+        <span id="charCount">0 / 10,000 characters</span>
+        <button id="analyzeButton" type="button">Analyze message</button>
+      </div>
+      <p id="status" role="status" aria-live="polite"></p>
+    </section>
+    <section id="result" class="panel result hidden" aria-live="polite">
+      <p class="eyebrow">ANALYSIS RESULT</p>
+      <h2 id="classification"></h2>
+      <div class="confidence-row">
+        <span>Model confidence</span>
+        <strong id="confidence">0%</strong>
+      </div>
+      <div class="confidence-track" role="progressbar" aria-label="Model confidence"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="confidenceBar" class="confidence-fill"></div>
+      </div>
+      <p id="explanation"></p>
+      <p class="warning" id="warning"></p>
+    </section>
+    <p class="footnote">A model prediction is not proof that a message is safe or malicious. Avoid clicking suspicious links or sharing personal information based only on this result.</p>
+  </main>
+  <script src="{{ url_for('static', filename='smishing/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analysis Tool</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+  <header class="top"><span class="mark">AT</span><span>Analysis Tool</span></header>
+  <main class="hero">
+    <p class="eyebrow">WELCOME</p>
+    <h1>Choose your analysis tool.</h1>
+    <p class="lead">A single workspace for checking suspicious text messages and exploring the quality of CSV datasets.</p>
+    <div class="cards">
+      <a class="card" href="{{ url_for('smishing_page') }}">
+        <div class="symbol">✉</div><p class="eyebrow">MESSAGE SECURITY</p>
+        <h2>Smishing Detector</h2>
+        <p>Paste an SMS message and classify it as smishing or likely safe using the saved CatBoost + TF-IDF model.</p>
+        <span class="action">Open detector <b>→</b></span>
+      </a>
+      <a class="card" href="{{ url_for('dataset_page') }}">
+        <div class="symbol">▦</div><p class="eyebrow">DATA QUALITY</p>
+        <h2>Dataset Analyzer</h2>
+        <p>Upload a CSV to inspect missing values, repeated values, duplicate rows, column types, recommendations, and a data preview.</p>
+        <span class="action">Open analyzer <b>→</b></span>
+      </a>
+    </div>
+  </main>
+  <footer>Local tools • Files are processed by the Flask application running on your computer.</footer>
+</body>
+</html>
